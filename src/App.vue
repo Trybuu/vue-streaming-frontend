@@ -4,7 +4,7 @@ import NavigationBar from './components/navigation/NavigationBar.vue'
 </script>
 
 <template>
-  <div class="grid grid-cols-1 gap-4 bg-gray-900 text-white">
+  <div class="grid grid-cols-1 gap-4">
     <NavigationBar />
 
     <RouterView />

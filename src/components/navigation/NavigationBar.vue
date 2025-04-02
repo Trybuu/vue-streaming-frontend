@@ -2,16 +2,28 @@
 import LinkLogo from './LinkLogo.vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+import router from '@/router'
 
 const user = useUserStore()
 const isLoggedIn = user.userData.isLoggedIn
 const route = useRoute()
+
+const handleLogout = async () => {
+  try {
+    const isLogoutSuccessful = await user.handleLogout()
+    if (isLogoutSuccessful) {
+      router.push('/')
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
 </script>
 
 <template>
   <nav class="fixed top-0 left-0 w-full flex gap-4 p-6">
     <!-- Zawsze widoczne logo Netflix -->
-    <LinkLogo :class="isLoggedIn ? '' : 'mr-auto'" />
+    <LinkLogo class="mr-auto" />
 
     <!-- Nawigacja dla podstrony logowania /login -->
     <div v-if="route.path.includes('login')"></div>
@@ -33,6 +45,7 @@ const route = useRoute()
         <li><RouterLink to="/browse/programs">Programy</RouterLink></li>
         <li><RouterLink to="/browse/movies">Filmy</RouterLink></li>
         <li><RouterLink to="/browse/my-list">Moja lista</RouterLink></li>
+        <button @click="handleLogout">Wyloguj</button>
       </ul>
     </div>
   </nav>
