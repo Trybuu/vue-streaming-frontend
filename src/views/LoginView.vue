@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import NavigationBar from '@/components/navigation/NavigationBar.vue'
 import { useUserStore } from '@/stores/user'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -25,8 +26,9 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <section class="flex flex-col items-center justify-center min-h-screen">
-    <div class="flex flex-col p-8 bg-black/50 rounded-md">
+  <NavigationBar />
+  <section class="flex min-h-screen flex-col items-center justify-center">
+    <div class="flex flex-col rounded-md bg-black/50 p-8">
       <form @submit.prevent="handleLogin" class="flex flex-col">
         <h2 class="text-xl text-white">Zaloguj się</h2>
         <input

@@ -1,1 +1,41 @@
 @import 'tailwindcss';
+@import 'primeicons/primeicons.css';
+
+@theme {
+  --max-w-8xl: 1920px;
+  --color-mint-500: oklch(0.72 0.11 178);
+}
+
+@layer utilities {
+  .darken::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+  }
+}
+
+@layer utilities {
+  .mask-border {
+    -webkit-border: linear-gradient(
+      to right,
+      rgba(33, 13, 22, 1) 16%,
+      rgba(184, 40, 105, 1),
+      rgba(229, 9, 20, 1),
+      rgba(184, 40, 105, 1),
+      rgba(33, 13, 22, 1) 84%
+    );
+    border: linear-gradient(
+      to right,
+      rgba(33, 13, 22, 1) 16%,
+      rgba(184, 40, 105, 1),
+      rgba(229, 9, 20, 1),
+      rgba(184, 40, 105, 1),
+      rgba(33, 13, 22, 1) 84%
+    );
+  }
+}
